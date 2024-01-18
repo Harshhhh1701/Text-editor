@@ -33,13 +33,12 @@
 						<option value="p">Paragraph</option>
 						
 					</select>
-					<select onchange="formatDoc('fontName', this.value); this.selectedIndex=0;">
-                        <option value="" selected="" hidden="" disabled="">Font</option>
-                        <option value="1">Arial</option>
-                        <option value="2">Georgia</option>
-                        <option value="3">Times New Roman</option>
-                        <option value="4">Courier New</option>
-                    </select>
+					<select id="font-select">
+						<option value="Arial, sans-serif">Arial</option>
+						<option value="Georgia, serif">Georgia</option>
+						<option value="Times New Roman, serif">Times New Roman</option>
+						<option value="Courier New, monospace">Courier New</option>
+					</select>
 					<select onchange="formatDoc('fontSize', this.value); this.selectedIndex=0;">
 						<option value="" selected="" hidden="" disabled="">Font size</option>
 						<option value="1">Extra small</option>
@@ -92,6 +91,21 @@
 		integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="script.js"></script>
+	<script>
+        document.getElementById('content').addEventListener('input', updateText);
+        document.getElementById('font-select').addEventListener('change', updateText);
+
+        function updateText() {
+            var textInput = document.getElementById('content').value;
+            var fontSelect = document.getElementById('font-select').value;
+            var inputDiv = document.getElementById('content');
+
+           
+            inputDiv.style.fontFamily = fontSelect;
+        }
+
+		
+    </script>
 </body>
 
 </html>
